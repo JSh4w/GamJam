@@ -25,23 +25,38 @@
           </svg>
         </div>
 
-        <h1 class="main-title">
-          <span class="word">
-            <span class="letter">G</span>
-            <span class="letter">A</span>
-            <span class="letter">M</span>
-          </span>
-          <span class="word">
-            <span class="letter">J</span>
-            <span class="letter">A</span>
-            <span class="letter">M</span>
-          </span>
-          <span class="word">
-            <span class="letter">J</span>
-            <span class="letter">A</span>
-            <span class="letter">N</span>
-          </span>
-        </h1>
+        <div class="title-container">
+          <svg class="race-track-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
+            <!-- Race track circle -->
+            <circle
+              cx="400"
+              cy="400"
+              r="300"
+              fill="none"
+              stroke="var(--text-light)"
+              stroke-width="3"
+              opacity="0.3"
+              class="track-outline"
+            />
+
+            <!-- Circular path for text -->
+            <defs>
+              <path
+                id="circlePath"
+                d="M 400,100 A 300,300 0 1,1 399,100"
+              />
+            </defs>
+
+            <!-- Text on path -->
+            <text class="race-text" font-size="80" font-weight="900" letter-spacing="30">
+              <textPath href="#circlePath" startOffset="0" class="text-path">
+                GAM JAM JAN
+              </textPath>
+            </text>
+          </svg>
+
+          <h1 class="main-title-static">GAM JAM JAN</h1>
+        </div>
 
         <p class="subtitle">A Game Development Marathon</p>
       </section>

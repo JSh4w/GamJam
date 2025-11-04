@@ -1,23 +1,40 @@
 import anime from 'animejs';
 
 export function animateHero() {
-  // Animate title letters with stagger
-  anime.timeline()
-    .add({
-      targets: '.letter',
-      translateY: [100, 0],
-      opacity: [0, 1],
-      easing: 'easeOutExpo',
-      duration: 1400,
-      delay: (_el: Element, i: number) => 100 + 50 * i
-    })
-    .add({
-      targets: '.subtitle',
-      opacity: [0, 1],
-      translateY: [30, 0],
-      easing: 'easeOutExpo',
-      duration: 1000
-    }, '-=800');
+  // Race track animation
+  const timeline = anime.timeline();
+
+  // 1. Draw the race track outline
+  timeline.add({
+    targets: '.track-outline',
+    strokeDashoffset: [2000, 0],
+    easing: 'easeInOutQuad',
+    duration: 2000,
+    delay: 300
+  })
+  // 2. Fade in the racing text
+  .add({
+    targets: '.race-text',
+    opacity: [0, 1],
+    easing: 'easeInQuad',
+    duration: 500
+  }, '-=500')
+  // 3. Animate text moving around the track (startOffset)
+  .add({
+    targets: '.text-path',
+    startOffset: ['0%', '100%'],
+    easing: 'linear',
+    duration: 6000,
+    loop: true
+  }, '-=200')
+  // 4. After one loop, fade in the static center text
+  .add({
+    targets: '.main-title-static',
+    opacity: [0, 1],
+    scale: [0.8, 1],
+    easing: 'easeOutExpo',
+    duration: 1000
+  }, 6000);
 
   // Animate shapes - floating entrance
   anime({

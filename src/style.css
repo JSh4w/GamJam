@@ -79,26 +79,49 @@ body {
   color: var(--accent);
 }
 
-.main-title {
-  font-size: clamp(3rem, 10vw, 8rem);
+.title-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.race-track-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.track-outline {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+}
+
+.race-text {
+  fill: transparent;
+  stroke: var(--text-light);
+  stroke-width: 2;
+  opacity: 0;
+}
+
+.text-path {
+  letter-spacing: 30;
+}
+
+.main-title-static {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(2rem, 8vw, 4rem);
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   text-align: center;
   margin: 0;
-  display: flex;
-  gap: clamp(1rem, 3vw, 3rem);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.word {
-  display: inline-flex;
-}
-
-.letter {
-  display: inline-block;
   opacity: 0;
-  transform: translateY(100px);
+  fill: transparent;
+  stroke: var(--text-light);
+  stroke-width: 2;
 }
 
 .subtitle {
@@ -225,9 +248,16 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .main-title {
-    flex-direction: column;
-    gap: 0.5rem;
+  .title-container {
+    max-width: 400px;
+  }
+
+  .race-text {
+    font-size: 50px;
+  }
+
+  .main-title-static {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
   }
 
   .detail-grid {
