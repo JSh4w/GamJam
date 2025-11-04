@@ -1,0 +1,241 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables - Inspired by anime.js color scheme */
+:root {
+  --bg-dark: #252423;
+  --text-light: #dad5d0;
+  --accent: #ff6b6b;
+  --accent-2: #4ecdc4;
+  --accent-3: #ffd93d;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title Section */
+.title-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.shapes-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0;
+  color: var(--text-light);
+}
+
+.shape-1 {
+  top: 20%;
+  left: 10%;
+  color: var(--accent);
+}
+
+.shape-2 {
+  top: 30%;
+  right: 15%;
+  color: var(--accent-2);
+}
+
+.shape-3 {
+  bottom: 25%;
+  left: 20%;
+  color: var(--accent-3);
+}
+
+.shape-4 {
+  bottom: 35%;
+  right: 10%;
+  color: var(--accent);
+}
+
+.main-title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  gap: clamp(1rem, 3vw, 3rem);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.word {
+  display: inline-flex;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  margin-top: 2rem;
+  opacity: 0;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+/* Details Section */
+.details-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(218, 213, 208, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(218, 213, 208, 0.1);
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.detail-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.detail-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.detail-content p {
+  font-size: 1rem;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+/* Info Section */
+.info-section {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.info-section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.info-text {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(50px);
+  text-align: center;
+}
+
+/* RSVP Section */
+.rsvp-section {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.rsvp-button {
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--bg-dark);
+  background-color: var(--text-light);
+  border-radius: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.rsvp-button:hover {
+  transform: scale(1.05);
+}
+
+.rsvp-note {
+  margin-top: 2rem;
+  opacity: 0;
+  font-size: 0.9rem;
+  color: rgba(218, 213, 208, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-title {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
