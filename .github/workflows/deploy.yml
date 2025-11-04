@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - claude/design-planning-session-011CUoVPdr3foeYFLdhME85c
   workflow_dispatch:
 
 permissions:
