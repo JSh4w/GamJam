@@ -17,4 +17,21 @@ body {
 
 #rain {
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 200px;
+  font-family: 'VT323', monospace;
+  color: rgba(0, 255, 70, 1);
+  z-index: 2;
+  margin: 0;
+  white-space: nowrap;
 }

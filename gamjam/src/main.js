@@ -1,15 +1,13 @@
 import './style.css'
-import { utils, animate as animeAnimate } from 'animejs'
+import { utils, animate as animeAnimate, splitText } from 'animejs'
 
+
+// Rain background setup
 const canvas = document.getElementById('rain');
 const ctx = canvas.getContext('2d');
-
-// Set canvas size
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 console.log('Canvas size:', canvas.width, canvas.height);
-
 // Characters for the rain
 const chars = 'ABCDEF0123456789XYZ^-_=[]|:<>?`';
 const fontSize = 20;
@@ -17,33 +15,28 @@ const columns = Math.floor(canvas.width / fontSize);
 
 console.log('Columns:', columns);
 
-// Title animation setup
-const finalTitle = 'GAMJAM';
-let displayTitle = finalTitle.split('').map(() => chars[Math.floor(Math.random() * chars.length)]).join('');
-const titleAnimation = {
-  progress: 0
-};
 
-// Animate title text using anime.js v4
-animeAnimate(titleAnimation, {
-  progress: 100,
-  duration: 3000,
-  ease: 'inOut(quad)',
-  onUpdate: () => {
-    const progress = titleAnimation.progress / 100;
-    displayTitle = finalTitle.split('').map((char, i) => {
-      // Each character resolves at different times
-      const charProgress = Math.max(0, Math.min(1, (progress - (i * 0.1)) * 1.5));
-      if (charProgress >= 1) {
-        return char;
-      } else {
-        return chars[Math.floor(Math.random() * chars.length)];
-      }
-    }).join('');
-  },
-  onComplete: () => {
-    displayTitle = finalTitle;
-  }
+// Title animation setup
+const titleElement = document.getElementById('title');
+const randomChar = () => chars.charAt(Math.floor(Math.random() * chars.length));
+
+document.fonts.ready.then(() => {
+  const originalText = titleElement.textContent;
+  const { chars: charElements } = splitText(titleElement, { chars: true });
+  const progress = { value: 0 };
+  animeAnimate(progress, {
+    value: 100,
+    duration: 1500,
+    ease: 'linear',
+    onUpdate: () => {
+      const p = progress.value / 100;
+      charElements.forEach((el, i) => {
+        const start = (i / charElements.length) * 0.8; // each starts at a % complete
+        const charP = Math.max(0, Math.min(1, (p - start)*charElements.length));
+        el.textContent = charP >= 1 ? originalText[i] : randomChar();
+      });
+    }
+  });
 });
 
 // Create drops - multiple per column for more frequent streams
@@ -76,22 +69,18 @@ function draw() {
   // Semi-transparent black to create fade effect (higher = shorter trails)
   ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-
   drops.forEach((drop) => {
     // Draw each character in the drop
     drop.chars.forEach((char, j) => {
       const y = drop.y + j * fontSize;
-
       // Calculate opacity based on position in trail
       const opacity = 1 - (j / drop.chars.length) * 0.8;
-
       // Brighter green for the leading character
       if (j === 0) {
         ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
       } else {
         ctx.fillStyle = `rgba(0, 255, 70, ${opacity})`;
       }
-
       ctx.font = `${fontSize}px monospace`;
       ctx.fillText(char, drop.x, y);
     });
@@ -114,13 +103,6 @@ function draw() {
 
     }
   });
-
-  // Draw GAMJAM title in the center
-  ctx.font = '200px VT323, monospace';
-  ctx.fillStyle = 'rgba(0, 255, 70, 1)';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(displayTitle, canvas.width / 2, canvas.height / 2);
 }
 
 // Animation loop using requestAnimationFrame
