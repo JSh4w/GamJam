@@ -1,5 +1,5 @@
 import './style.css'
-import { utils } from 'animejs'
+import { utils, animate as animeAnimate } from 'animejs'
 
 const canvas = document.getElementById('rain');
 const ctx = canvas.getContext('2d');
@@ -16,6 +16,35 @@ const fontSize = 20;
 const columns = Math.floor(canvas.width / fontSize);
 
 console.log('Columns:', columns);
+
+// Title animation setup
+const finalTitle = 'GAMJAM';
+let displayTitle = finalTitle.split('').map(() => chars[Math.floor(Math.random() * chars.length)]).join('');
+const titleAnimation = {
+  progress: 0
+};
+
+// Animate title text using anime.js v4
+animeAnimate(titleAnimation, {
+  progress: 100,
+  duration: 3000,
+  ease: 'inOut(quad)',
+  onUpdate: () => {
+    const progress = titleAnimation.progress / 100;
+    displayTitle = finalTitle.split('').map((char, i) => {
+      // Each character resolves at different times
+      const charProgress = Math.max(0, Math.min(1, (progress - (i * 0.1)) * 1.5));
+      if (charProgress >= 1) {
+        return char;
+      } else {
+        return chars[Math.floor(Math.random() * chars.length)];
+      }
+    }).join('');
+  },
+  onComplete: () => {
+    displayTitle = finalTitle;
+  }
+});
 
 // Create drops - multiple per column for more frequent streams
 const drops = [];
@@ -91,7 +120,7 @@ function draw() {
   ctx.fillStyle = 'rgba(0, 255, 70, 1)';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('GAMJAM', canvas.width / 2, canvas.height / 2);
+  ctx.fillText(displayTitle, canvas.width / 2, canvas.height / 2);
 }
 
 // Animation loop using requestAnimationFrame
