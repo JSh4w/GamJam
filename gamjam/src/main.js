@@ -77,9 +77,9 @@ function draw() {
       const opacity = 1 - (j / drop.chars.length) * 0.8;
       // Brighter green for the leading character
       if (j === 0) {
-        ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-      } else {
         ctx.fillStyle = `rgba(0, 255, 70, ${opacity})`;
+      } else {
+        ctx.fillStyle = `rgba(0, 180, 50, ${opacity})`;
       }
       ctx.font = `${fontSize}px monospace`;
       ctx.fillText(char, drop.x, y);
