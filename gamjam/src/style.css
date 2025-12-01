@@ -64,3 +64,58 @@ body {
 #details a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  #title {
+    font-size: 80px;
+    top: 30%;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  #details {
+    font-size: 32px;
+    transform: translate(-50%, calc(-50% + 250px));
+    padding: 0 20px;
+    width: 90%;
+  }
+
+  #details p {
+    margin: 10px 0;
+  }
+
+  #details a {
+    padding: 10px 20px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  #title {
+    font-size: 48px;
+    top: 25%;
+    white-space: nowrap;
+  }
+
+  #details {
+    font-size: 24px;
+    transform: translate(-50%, calc(-50% + 180px));
+  }
+
+  #details a {
+    padding: 8px 16px;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  #title {
+    font-size: 38px;
+  }
+
+  #details {
+    font-size: 20px;
+  }
+}
