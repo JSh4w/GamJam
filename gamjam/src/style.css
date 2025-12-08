@@ -82,7 +82,7 @@ body {
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   #title {
-    font-size: 80px;
+    font-size: 60px;
     top: 10%;
     white-space: nowrap;
     text-align: center;
@@ -90,13 +90,13 @@ body {
   }
 
   #countdown {
-    font-size: 50px;
+    font-size: 30px;
     top: 15%;
   }
 
   #details {
-    font-size: 32px;
-    transform: translate(-50%, calc(-35% + 250px));
+    font-size: 20px;
+    transform: translate(-50%, calc(-50% + 250px));
     padding: 0 20px;
     width: 90%;
   }
@@ -113,18 +113,18 @@ body {
 
 @media (max-width: 480px) {
   #title {
-    font-size: 48px;
+    font-size: 50px;
     top: 10%;
     white-space: nowrap;
   }
 
   #countdown {
-    font-size: 40px;
+    font-size: 35px;
     top: 15%;
   }
 
   #details {
-    font-size: 24px;
+    font-size: 25px;
     transform: translate(-50%, calc(-30% + 180px));
   }
 
