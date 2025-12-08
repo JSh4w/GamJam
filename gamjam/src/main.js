@@ -111,11 +111,36 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
+// Countdown timer
+const targetDate = new Date('2026-01-11T10:00:00').getTime();
+const countdownEl = document.getElementById('countdown');
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  if (distance < 0) {
+    countdownEl.textContent = '00D 00H 00M 00S';
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdownEl.textContent = `${String(days).padStart(3, '0')}D ${String(hours).padStart(2, '0')}H ${String(minutes).padStart(2, '0')}M ${String(seconds).padStart(2, '0')}S`;
+}
+
 // Wait for font to load before starting animation
 document.fonts.ready.then(() => {
   console.log('Font loaded');
   animate();
   console.log('Animation started');
+
+  // Initialize and start countdown
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 });
 
 // Handle window resize
