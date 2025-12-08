@@ -113,7 +113,7 @@ body {
 
 @media (max-width: 480px) {
   #title {
-    font-size: 50px;
+    font-size: 50 px;
     top: 10%;
     white-space: nowrap;
   }
