@@ -96,7 +96,7 @@ body {
 
   #details {
     font-size: 32px;
-    transform: translate(-50%, calc(-50% + 250px));
+    transform: translate(-50%, calc(-35% + 250px));
     padding: 0 20px;
     width: 90%;
   }
@@ -125,7 +125,7 @@ body {
 
   #details {
     font-size: 24px;
-    transform: translate(-50%, calc(-50% + 180px));
+    transform: translate(-50%, calc(-30% + 180px));
   }
 
   #details a {
