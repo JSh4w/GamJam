@@ -109,11 +109,15 @@ body {
     padding: 10px 20px;
     font-size: 28px;
   }
+
+  #rain {
+    opacity: 0.5;
+  }
 }
 
 @media (max-width: 480px) {
   #title {
-    font-size: 50 px;
+    font-size: 50px;
     top: 10%;
     white-space: nowrap;
   }
@@ -131,6 +135,10 @@ body {
   #details a {
     padding: 8px 16px;
     font-size: 22px;
+  }
+
+  #rain {
+    opacity: 0.4;
   }
 }
 
