@@ -119,13 +119,13 @@ body {
   }
 
   #countdown {
-    font-size: 35px;
+    font-size: 32px;
     top: 15%;
   }
 
   #details {
-    font-size: 25px;
-    transform: translate(-50%, calc(-30% + 180px));
+    font-size: 22px;
+    transform: translate(-50%, calc(-40% + 180px));
   }
 
   #details a {
