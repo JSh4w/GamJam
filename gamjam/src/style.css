@@ -141,7 +141,7 @@ body {
 
   #details {
     font-size: 22px;
-    transform: translate(-50%, calc(-40% + 180px));
+    transform: translate(-50%, calc(-40% + 220px));
   }
 
   #details a {
