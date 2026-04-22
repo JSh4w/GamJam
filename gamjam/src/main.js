@@ -32,7 +32,7 @@ document.fonts.ready.then(() => {
       const p = progress.value / 100;
       charElements.forEach((el, i) => {
         const start = (i / charElements.length) * 0.8; // each starts at a % complete
-        const charP = Math.max(0, Math.min(1, (p - start)*charElements.length));
+        const charP = Math.max(0, Math.min(1, (p - start) * charElements.length));
         el.textContent = charP >= 1 ? originalText[i] : randomChar();
       });
     }
@@ -99,7 +99,7 @@ function draw() {
     if (utils.random(0, 1) > 0.98) {
       const randomIndex = Math.floor(utils.random(0, drop.chars.length));
       //drop.chars[randomIndex] = Math.random() < 0.5 ? '0' : '1';
-      drop.chars[randomIndex] = chars[Math.floor(utils.random(0, chars.length-1))];
+      drop.chars[randomIndex] = chars[Math.floor(utils.random(0, chars.length - 1))];
 
     }
   });
@@ -112,7 +112,7 @@ function animate() {
 }
 
 // Countdown timer
-const targetDate = new Date('2026-01-11T10:00:00').getTime();
+const targetDate = new Date('2026-06-06T10:00:00').getTime();
 const countdownEl = document.getElementById('countdown');
 
 function updateCountdown() {
